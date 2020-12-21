@@ -1,5 +1,7 @@
 import pygame
 
+from items import Maze, Guardian, Macgyver
+
 
 """ Different constants of the game """
 
@@ -27,7 +29,7 @@ pygame.init()
 WIDTH = 300
 HEIGHT = 300
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-fond = pygame.image.load("images/floor-tiles-20x20.png").convert()
+fond = pygame.image.load("images/floor-tiles-20x20.png").convert_alpha()
 SCREEN.blit(fond, (0, 0))
 pygame.display.set_caption('The Maze')
 
@@ -40,17 +42,55 @@ YELLOW = (255, 255, 255)
 
 SCREEN.fill(BLUE)
 
+MAZE_IMG = pygame.image.load("images/floor-tiles-20x20.png").convert_alpha()
+WALL_IMG = pygame.image.load('images/structures.png').convert_alpha()
+PLAYER_IMG = pygame.image.load("images/MacGyver.png").convert_alpha()
 
-class Maze:
-    maze = pygame.image.load("images/floor-tiles-20x20.png").convert()
-    wall = pygame.image.load('images/structures.png').convert()
 
+class CreateGame(pygame.sprite.Sprite):
 
-class Macgyver:
-    player = pygame.image.load("images/MacGyver.png").convert_alpha()
+    def __init__(self):
+        super().__init__()
+        self.x = 0
+        self.y = 0
+        self.rect = self.image.get_rect()
+        self.rect.x = 300
+        self.rect.y = 300
+
+        x, y = 0, 0
+        with open("maze.txt", "r") as maze:
+            for line in maze:
+                x += 1
+                for cell in line:
+                    if cell != "\n":
+                        y += 1
+                        self.tiles[(x, y)] = cell
+                    if cell == " ":
+                        self.tiles[(x, y)] = MAZE_IMG
+                        tiles.blit(MAZE_IMG, (20 * x, 20 * y))
+                    if cell == "P":
+                        self.tiles[(x, y)] = PLAYER_IMAGE
+                        tiles.blit(PLAYER_IMG, (20 * x, 20 * y))
+                    if cell == "B":
+                        self.tiles[(x, y)] = BAD_GUY_IMAGE
+                        tiles.blit(BAD_GUY_IMG, (20 * x, 20 * y))
+                    if cell == "X":
+                        self.tiles[(x, y)] = WALL_IMG
+                        tiles.blit(WALL_IMG, (20 * x, 20 * y))
+                    if cell == "E":
+                        self.tiles[(x, y)] = ETHER_IMAGE
+                        tiles.blit(ETHER_IMAGE, (20 * x, 20 * y))
+                    if cell == "T":
+                        self.tiles[(x, y)] = TUBE_IMAGE
+                        tiles.blit(TUBE_IMAGE, (20 * x, 20 * y))
+                    if cell == "S":
+                        self.tiles[(x, y)] = SERINGE_IMAGE
+                        tiles.blit(SERINGE_IMAGE, (20 * x, 20 * y))
+                y = 0
 
 
 pygame.display.flip()
+
 
 is_running = True
 while is_running:
