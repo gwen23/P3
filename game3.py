@@ -1,5 +1,7 @@
 import pygame
 
+from pygame.locals import *
+
 from items import Maze, Guardian, Macgyver
 
 
@@ -14,23 +16,14 @@ SERINGE_STRIPE = "S"
 WALL_STRIPE = "X"
 FLOOR_STRIPE = " "
 
-# Path for the different sources of the game
-PLAYER_IMAGE = "./images/MacGyver.png"
-BAD_GUY_IMAGE = "./images/Gardien.png"
-WALL_IMAGES = "./images/structures.png"
-FLOOR_IMG = "./images/floor-tiles-20x20.png"
-ETHER_IMAGE = "./images/ether.png"
-TUBE_IMAGE = "./images/tube_plastique.png"
-SERINGE_IMAGE = "./images/seringue.png"
-
-
 pygame.init()
+clock = pygame.time.Clock()
 
 WIDTH = 300
 HEIGHT = 300
 size_sprite = 20
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-fond = pygame.image.load("./images/floor-tiles-20x20.png").convert_alpha()
+fond = pygame.image.load("./images/floor-tiles-20x20.png").convert()
 pygame.display.set_caption('The Maze')
 
 WHITE = (255, 255, 255)
@@ -40,20 +33,25 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 255)
 
-MAZE_IMG = pygame.image.load("./images/floor-tiles-20x20.png").convert_alpha()
-WALL_IMG = pygame.image.load("./images/structures.png").convert_alpha()
+FLOOR_IMG = pygame.image.load("./images/floor-tiles-20x20.png").convert()
+WALL_IMG = pygame.image.load("./images/structures.png").convert()
 PLAYER_IMG = pygame.image.load("./images/MacGyver.png").convert_alpha()
+ETHER_IMAGE = pygame.image.load("./images/ether.png").convert_alpha()
+TUBE_IMAGE = pygame.image.load("./images/tube_plastique.png").convert_alpha()
+SERINGE_IMAGE = pygame.image.load("./images/seringue.png").convert_alpha()
+BAD_GUY_IMAGE = pygame.image.load("./images/Gardien.png").convert_alpha()
 
 
 class Level(Maze):
     def __init__(self):
         Maze.__init__(self)
+        self.direction = 0
         # self.tiles => est disponible
 
     def afficher(self):
         for key, value in enumerate(self.tiles):
-            x = int(value[0]) * size_sprite
-            y = int(value[1]) * size_sprite
+            x = int(value[1]) * size_sprite
+            y = int(value[0]) * size_sprite
             sprite = self.tiles[value]
             if sprite == " ":
                 screen.blit(FLOOR_IMG, (x, y))
@@ -70,15 +68,60 @@ class Level(Maze):
             elif sprite == "S":
                 screen.blit(SERINGE_IMAGE, (x, y))
 
+    def mouvement(self):
+        x = 1 * size_sprite
+        y = 1 * size_sprite
+        self.x = x
+        self.y = y
+        for event.type in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.x += (1 * size_sprite)
+                    screen.blit(PLAYER_IMG, (x, y + 20))
+                elif event.key == pygame.K_LEFT:
+                    self.x -= (1 * size_sprite)
+                    screen.blit(PLAYER_IMG, (x, y - 20))
+                elif event.key == pygame.K_DOWN:
+                    self.y += (1 * size_sprite)
+                    screen.blit(PLAYER_IMG, (x - 20, y))
+                elif event.key == pygame.K_UP:
+                    self.y -= (1 * size_sprite)
+                    screen.blit(PLAYER_IMG, (x + 20, y))
+
+    def update(self):
+        pass
+
+
 level = Level()
+maze = Maze()
 is_running = True
 # Dans pygame
 while is_running:
+    clock.tick(5)
     screen.blit(fond, (0, 0))
     level.afficher()
-    pygame.display.flip()
     for event in pygame.event.get():
+        x = 0
+        y = 20
+        if event.type == KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                screen.blit(FLOOR_IMG, (x, y))
+                x += 1 * size_sprite
+                screen.blit(PLAYER_IMG, (x, y))
+            elif event.key == pygame.K_LEFT:
+                screen.blit(FLOOR_IMG, (x, y))
+                x -= 1 * size_sprite
+                screen.blit(PLAYER_IMG, (x, y))
+            elif event.key == pygame.K_UP:
+                screen.blit(FLOOR_IMG, (x, y))
+                y -= 1 * size_sprite
+                screen.blit(PLAYER_IMG, (x, y))
+            elif event.key == pygame.K_DOWN:
+                screen.blit(FLOOR_IMG, (x, y))
+                y += 1 * size_sprite
+                screen.blit(PLAYER_IMG, (x, y))
         if event.type == pygame.QUIT:
             is_running = False
+    pygame.display.update()
 
 pygame.quit()

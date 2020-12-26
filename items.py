@@ -27,7 +27,7 @@ class Maze:
         self.numb_objects = 0
 
     def test(self):
-        x, y = 0, 0
+        x, y = -1, -1
         with open("maze.txt", "r") as maze:
             for line in maze:
                 x += 1
@@ -41,7 +41,7 @@ class Maze:
                         self.mac_gyver = Macgyver(x, y)
                     if cell == "B":
                         self.guardian = Guardian(x, y)
-                y = 0
+                y = -1
 
     def move_macgyver(self, direction):
         if direction == "up":
@@ -116,41 +116,20 @@ class Maze:
 
                     # changer les coordonnées de macgyver DANS self.tiles
                     self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
-
-        # OK
         if direction == "right":
-            # on connait les coordonnées de macgyver
-            # on veut trouver les coordonnées de destination
             coo_destination = (self.mac_gyver.x, self.mac_gyver.y + 1)
-            # on vérifie que les coo de destination existent
             if self.tiles[coo_destination]:
-                # ici je sais que la case existe
                 if self.tiles[coo_destination] != "X":
-                    # ici je sais que la case n'est pas un mur
-                    # je peux bouger Macgyver
-
-                    # changer le contenu de la case où se trouvait macgyver par un chemin
                     self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = " "
-                    # changer les coordonnées de macgyver
                     self.mac_gyver.x = coo_destination[0]
                     self.mac_gyver.y = coo_destination[1]
-
-                    # il faut vérifier qu'il n'y ait pas d'objet sur la case.
-                    # si il y a un objet, on le ramasse
                     if self.tiles[coo_destination] in "TSE":
-                        # on ramasse l'objet
                         self.numb_objects += 1
-
-                    # Il faut vérifier qu'il n'y ait pas le gardien sur la
-                    # case de destination
                     if self.tiles[coo_destination] == "B":
-                        # il y a le gardien :
                         if self.numb_objects == 3:
                             print("you win")
-                            # on gagne
                         else:
                             print("you lose")
-                            # on perd
 
                     # changer les coordonnées de macgyver DANS self.tiles
                     self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
@@ -331,6 +310,3 @@ if __name__ == "__main__":
     maze.move_macgyver("right")
     print(maze.mac_gyver.x, maze.mac_gyver.y)
     # 14, 15
-
-
-
