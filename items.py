@@ -80,6 +80,8 @@ class Maze:
 
                     # changer les coordonnées de macgyver DANS self.tiles
                     self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
+                    return True
+
         if direction == "down":
             # on connait les coordonnées de macgyver
             # on veut trouver les coordonnées de destination
@@ -116,6 +118,8 @@ class Maze:
 
                     # changer les coordonnées de macgyver DANS self.tiles
                     self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
+                    return True
+
         if direction == "right":
             coo_destination = (self.mac_gyver.x, self.mac_gyver.y + 1)
             if self.tiles[coo_destination]:
@@ -130,9 +134,8 @@ class Maze:
                             print("you win")
                         else:
                             print("you lose")
-
-                    # changer les coordonnées de macgyver DANS self.tiles
                     self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
+                    return True
 
         if direction == "left":
             # on connait les coordonnées de macgyver
@@ -170,6 +173,8 @@ class Maze:
 
                     # changer les coordonnées de macgyver DANS self.tiles
                     self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
+                    return True
+        return False
 
     def create_objects(self):
         # créer 3 objets

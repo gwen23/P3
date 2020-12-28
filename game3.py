@@ -41,7 +41,7 @@ SERINGE_IMAGE = pygame.image.load("./images/seringue.png").convert_alpha()
 BAD_GUY_IMAGE = pygame.image.load("./images/Gardien.png").convert_alpha()
 
 PLAYER_IMG = pygame.image.load("./images/MacGyver.png").convert_alpha()
-player_img = pygame.Rect(0, 20, 20, 20)
+
 
 class Level(Maze):
 
@@ -94,29 +94,33 @@ level = Level()
 is_running = True
 screen.blit(fond, (0, 0))
 level.afficher()
+x = 0
+y = 20
 # Dans pygame
 while is_running:
     clock.tick(5)
-    x = 0
-    y = 20
     for event in pygame.event.get():
         if event.type == KEYDOWN:
             if event.key == pygame.K_RIGHT:
-                screen.blit(FLOOR_IMG, (x, y))
-                x += 1 * size_sprite
-                screen.blit(PLAYER_IMG, (x, y))
+                if level.move_macgyver("right"):
+                    screen.blit(FLOOR_IMG, (x, y))
+                    x += 1 * size_sprite
+                    screen.blit(PLAYER_IMG, (x, y))
             elif event.key == pygame.K_LEFT:
-                screen.blit(FLOOR_IMG, (x, y))
-                x -= 1 * size_sprite
-                screen.blit(PLAYER_IMG, (x, y))
+                if level.move_macgyver("left"):
+                    screen.blit(FLOOR_IMG, (x, y))
+                    x -= 1 * size_sprite
+                    screen.blit(PLAYER_IMG, (x, y))
             elif event.key == pygame.K_UP:
-                screen.blit(FLOOR_IMG, (x, y))
-                y -= 1 * size_sprite
-                screen.blit(PLAYER_IMG, (x, y))
+                if level.move_macgyver("up"):
+                    screen.blit(FLOOR_IMG, (x, y))
+                    y -= 1 * size_sprite
+                    screen.blit(PLAYER_IMG, (x, y))
             elif event.key == pygame.K_DOWN:
-                screen.blit(FLOOR_IMG, (x, y))
-                y += 1 * size_sprite
-                screen.blit(PLAYER_IMG, (x, y))
+                if level.move_macgyver("down"):
+                    screen.blit(FLOOR_IMG, (x, y))
+                    y += 1 * size_sprite
+                    screen.blit(PLAYER_IMG, (x, y))
         if event.type == pygame.QUIT:
             is_running = False
     pygame.display.update()
