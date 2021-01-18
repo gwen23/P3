@@ -183,4 +183,3 @@ class Maze:
             # self.paths[i] # i = 2 => coordonnées
             coo_nouvel_obj = self.paths[i]  # coordonnées de placement des objets
             self.tiles[coo_nouvel_obj] = objects[i]  # définition de l'objet dans les tiles, aux coordonnées aléatoires
-

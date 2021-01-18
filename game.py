@@ -4,8 +4,6 @@ from pygame.locals import *
 from settings import *
 from level import *
 from the_maze import *
-from guardian import Guardian
-from player import Macgyver
 
 level = Level()
 maze = Maze()
@@ -65,5 +63,5 @@ class Game:
 if __name__ == "__main__":
     game = Game()
     while True:
-        game.maze()
+        game.run()
         game.main_loop()

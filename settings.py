@@ -1,6 +1,5 @@
 """ Different constants of the game """
 import pygame
-from pygame.locals import *
 
 # String to identify each character in level structure
 PLAYER_STRIPE = "P"

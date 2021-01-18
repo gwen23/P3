@@ -47,5 +47,3 @@ class Level(Maze):
                 elif event.key == pygame.K_UP:
                     x += (1 * size_sprite)
                     screen.blit(PLAYER_IMG, (x + 20, y))
-
-
