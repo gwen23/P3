@@ -164,6 +164,23 @@ class Maze:
                     return True
         return False
 
+    def conditions(self, coo_destination):
+        if self.tiles[coo_destination]:
+            if self.tiles[coo_destination] != "X":
+                self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = " "
+                self.mac_gyver.x = coo_destination[0]
+                self.mac_gyver.y = coo_destination[1]
+                if self.tiles[coo_destination] in "TSE":
+                    self.numb_objects += 1
+                    print("object + 1")
+                if self.tiles[coo_destination] == "B":
+                    if self.numb_objects == 3:
+                        print("you win")
+                    else:
+                        print("you lose")
+                self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
+                return True
+
     def create_objects(self):
         # créer 3 objets
         # Pour les créer :

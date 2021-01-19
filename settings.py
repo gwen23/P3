@@ -10,15 +10,11 @@ SERINGE_STRIPE = "S"
 WALL_STRIPE = "X"
 FLOOR_STRIPE = " "
 
-pygame.init()
-clock = pygame.time.Clock()
-
 WIDTH = 300
 HEIGHT = 300
-size_sprite = 20
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-fond = pygame.image.load("./images/floor-tiles-20x20.png").convert()
-pygame.display.set_caption('The Maze')
+SIZE_SPRITE = 20
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+FOND = "./images/floor-tiles-20x20.png"
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -27,10 +23,10 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 255)
 
-FLOOR_IMG = pygame.image.load("./images/floor-tiles-20x20.png").convert()
-WALL_IMG = pygame.image.load("./images/structures.png").convert()
-ETHER_IMAGE = pygame.image.load("./images/ether.png").convert_alpha()
-TUBE_IMAGE = pygame.image.load("./images/tube_plastique.png").convert_alpha()
-SERINGE_IMAGE = pygame.image.load("./images/seringue.png").convert_alpha()
-BAD_GUY_IMAGE = pygame.image.load("./images/Gardien.png").convert_alpha()
-PLAYER_IMG = pygame.image.load("./images/MacGyver.png").convert_alpha()
+FLOOR_IMG = "./images/floor-tiles-20x20.png"
+WALL_IMG = "./images/structures.png"
+ETHER_IMAGE = "./images/ether.png"
+TUBE_IMAGE = "./images/tube_plastique.png"
+SERINGE_IMAGE = "./images/seringue.png"
+BAD_GUY_IMAGE = "./images/Gardien.png"
+PLAYER_IMG = "./images/MacGyver.png"

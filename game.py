@@ -5,25 +5,34 @@ from settings import *
 from level import *
 from the_maze import *
 
+clock = pygame.time.Clock()
+pygame.display.set_caption('The Maze')
 level = Level()
-maze = Maze()
 
 
 class Game:
 
     def __init__(self):
         pygame.init()
+        self.maze = Maze()
+        pygame.image.load(FLOOR_IMG).convert()
+        pygame.image.load(WALL_IMG).convert()
+        pygame.image.load(ETHER_IMAGE).convert_alpha()
+        pygame.image.load(TUBE_IMAGE).convert_alpha()
+        pygame.image.load(SERINGE_IMAGE).convert_alpha()
+        pygame.image.load(BAD_GUY_IMAGE).convert_alpha()
+        pygame.image.load(PLAYER_IMG).convert_alpha()
+        pygame.display.set_caption('The Maze')
         self.clock = pygame.time.Clock()
         self.is_running = True
-        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        self.SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
         self.fond = pygame.image.load("./images/floor-tiles-20x20.png").convert()
-        pygame.display.set_caption('The Maze')
         self.level = Level()
         self.run()
 
     def run(self):
-        self.screen.blit(self.fond, (0, 0))
-        self.level.afficher()
+        self.SCREEN.blit(self.fond, (0, 0))
+        self.level.afficher(self.maze.tiles)
         self.main_loop()
 
     def main_loop(self):
@@ -35,25 +44,25 @@ class Game:
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
                     if event.key == pygame.K_RIGHT:
-                        if level.move_macgyver("right"):
-                            screen.blit(FLOOR_IMG, (x, y))
-                            x += 1 * size_sprite
-                            screen.blit(PLAYER_IMG, (x, y))
+                        if self.maze.move_macgyver("right"):
+                            SCREEN.blit(pygame.image.load(FLOOR_IMG).convert(), (x, y))
+                            x += 1 * SIZE_SPRITE
+                            SCREEN.blit(pygame.image.load(PLAYER_IMG).convert_alpha(), (x, y))
                     elif event.key == pygame.K_LEFT:
-                        if level.move_macgyver("left"):
-                            screen.blit(FLOOR_IMG, (x, y))
-                            x -= 1 * size_sprite
-                            screen.blit(PLAYER_IMG, (x, y))
+                        if self.maze.move_macgyver("left"):
+                            SCREEN.blit(pygame.image.load(FLOOR_IMG).convert(), (x, y))
+                            x -= 1 * SIZE_SPRITE
+                            SCREEN.blit(pygame.image.load(PLAYER_IMG).convert_alpha(), (x, y))
                     elif event.key == pygame.K_UP:
-                        if level.move_macgyver("up"):
-                            screen.blit(FLOOR_IMG, (x, y))
-                            y -= 1 * size_sprite
-                            screen.blit(PLAYER_IMG, (x, y))
+                        if self.maze.move_macgyver("up"):
+                            SCREEN.blit(pygame.image.load(FLOOR_IMG).convert(), (x, y))
+                            y -= 1 * SIZE_SPRITE
+                            SCREEN.blit(pygame.image.load(PLAYER_IMG).convert_alpha(), (x, y))
                     elif event.key == pygame.K_DOWN:
-                        if level.move_macgyver("down"):
-                            screen.blit(FLOOR_IMG, (x, y))
-                            y += 1 * size_sprite
-                            screen.blit(PLAYER_IMG, (x, y))
+                        if self.maze.move_macgyver("down"):
+                            SCREEN.blit(pygame.image.load(FLOOR_IMG).convert(), (x, y))
+                            y += 1 * SIZE_SPRITE
+                            SCREEN.blit(pygame.image.load(PLAYER_IMG).convert_alpha(), (x, y))
                 if event.type == pygame.QUIT:
                     is_running = False
             pygame.display.update()
