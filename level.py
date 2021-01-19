@@ -5,8 +5,7 @@ from settings import *
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 
 
-class Level():
-
+class Level:
     def __init__(self):
         self.direction = 0
 
