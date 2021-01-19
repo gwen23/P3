@@ -15,6 +15,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self.maze = Maze()
+        pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.image.load(FLOOR_IMG).convert()
         pygame.image.load(WALL_IMG).convert()
         pygame.image.load(ETHER_IMAGE).convert_alpha()

@@ -1,5 +1,8 @@
-from the_maze import Maze
+import pygame
+
 from settings import *
+
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 
 
 class Level():

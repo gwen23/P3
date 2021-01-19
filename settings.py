@@ -1,5 +1,4 @@
 """ Different constants of the game """
-import pygame
 
 # String to identify each character in level structure
 PLAYER_STRIPE = "P"
@@ -13,7 +12,6 @@ FLOOR_STRIPE = " "
 WIDTH = 300
 HEIGHT = 300
 SIZE_SPRITE = 20
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 FOND = "./images/floor-tiles-20x20.png"
 
 WHITE = (255, 255, 255)
