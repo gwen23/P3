@@ -9,7 +9,7 @@ class Level:
     def __init__(self):
         self.direction = 0
 
-    def afficher(self, tiles):
+    def display(self, tiles):
         for key, value in enumerate(tiles):
             x = int(value[1]) * SIZE_SPRITE
             y = int(value[0]) * SIZE_SPRITE
@@ -29,7 +29,7 @@ class Level:
             elif sprite == "S":
                 SCREEN.blit(pygame.image.load(SERINGE_IMAGE).convert(), (x, y))
 
-    def mouvement(self, x, y):
+    def movement(self, x, y):
         for key, value in enumerate(self.tiles):
             x = int(value[1]) * SIZE_SPRITE
             y = int(value[0]) * SIZE_SPRITE

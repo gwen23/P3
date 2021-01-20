@@ -122,5 +122,5 @@ class Maze:
         objects = ["E", "T", "S"]
         random.shuffle(self.paths)
         for i in range(0, 3):
-            coo_nouvel_obj = self.paths[i]
-            self.tiles[coo_nouvel_obj] = objects[i]
+            coo_new_obj = self.paths[i]
+            self.tiles[coo_new_obj] = objects[i]

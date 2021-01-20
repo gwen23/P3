@@ -33,7 +33,7 @@ class Game:
 
     def run(self):
         self.SCREEN.blit(self.fond, (0, 0))
-        self.level.afficher(self.maze.tiles)
+        self.level.display(self.maze.tiles)
         self.main_loop()
 
     def main_loop(self):
