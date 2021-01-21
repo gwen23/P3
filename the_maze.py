@@ -32,74 +32,20 @@ class Maze:
                 y = -1
 
     def move_macgyver(self, direction):
+        coo_destination = (self.mac_gyver.x, self.mac_gyver.y)
         if direction == "up":
             coo_destination = (self.mac_gyver.x - 1, self.mac_gyver.y)
-            if self.tiles[coo_destination]:
-                if self.tiles[coo_destination] != "X":
-                    self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = " "
-                    self.mac_gyver.x = coo_destination[0]
-                    self.mac_gyver.y = coo_destination[1]
-                    if self.tiles[coo_destination] in "TSE":
-                        self.numb_objects += 1
-                    if self.tiles[coo_destination] == "B":
-                        if self.numb_objects == 3:
-                            print("you win")
-                        else:
-                            print("you lose")
-                    self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
-                    return True
-
         if direction == "down":
             coo_destination = (self.mac_gyver.x + 1, self.mac_gyver.y)
-            if self.tiles[coo_destination]:
-                if self.tiles[coo_destination] != "X":
-                    self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = " "
-                    self.mac_gyver.x = coo_destination[0]
-                    self.mac_gyver.y = coo_destination[1]
-                    if self.tiles[coo_destination] in "TSE":
-                        self.numb_objects += 1
-                    if self.tiles[coo_destination] == "B":
-                        if self.numb_objects == 3:
-                            print("you win")
-                        else:
-                            print("you lose")
-                    self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
-                    return True
-
         if direction == "right":
             coo_destination = (self.mac_gyver.x, self.mac_gyver.y + 1)
-            if self.tiles[coo_destination]:
-                if self.tiles[coo_destination] != "X":
-                    self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = " "
-                    self.mac_gyver.x = coo_destination[0]
-                    self.mac_gyver.y = coo_destination[1]
-                    if self.tiles[coo_destination] in "TSE":
-                        self.numb_objects += 1
-                    if self.tiles[coo_destination] == "B":
-                        if self.numb_objects == 3:
-                            print("you win")
-                        else:
-                            print("you lose")
-                    self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
-                    return True
-
         if direction == "left":
             coo_destination = (self.mac_gyver.x, self.mac_gyver.y - 1)
-            if self.tiles[coo_destination]:
-                if self.tiles[coo_destination] != "X":
-                    self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = " "
-                    self.mac_gyver.x = coo_destination[0]
-                    self.mac_gyver.y = coo_destination[1]
-                    if self.tiles[coo_destination] in "TSE":
-                        self.numb_objects += 1
-                    if self.tiles[coo_destination] == "B":
-                        if self.numb_objects == 3:
-                            print("you win")
-                        else:
-                            print("you lose")
-                    self.tiles[(self.mac_gyver.x, self.mac_gyver.y)] = "P"
-                    return True
-        return False
+        self.conditions(coo_destination)
+        if self.tiles[coo_destination] != "X":
+            return True
+        else:
+            return False
 
     def conditions(self, coo_destination):
         if self.tiles[coo_destination]:
