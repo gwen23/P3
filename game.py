@@ -1,9 +1,9 @@
 import pygame
 
 from pygame.locals import *
-from settings import *
-from level import *
-from the_maze import *
+from game.settings import *
+from game.level import *
+from game.the_maze import *
 
 clock = pygame.time.Clock()
 pygame.display.set_caption('The Maze')

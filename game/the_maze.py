@@ -1,6 +1,6 @@
 import random
-from guardian import Guardian
-from player import Macgyver
+from game.guardian import Guardian
+from game.player import Macgyver
 
 
 class Maze:
@@ -16,7 +16,7 @@ class Maze:
 
     def test(self):
         x, y = -1, -1
-        with open("maze.txt", "r") as maze:
+        with open("game/maze.txt", "r") as maze:
             for line in maze:
                 x += 1
                 for cell in line:
