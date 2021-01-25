@@ -21,10 +21,10 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 255)
 
-FLOOR_IMG = "./images/floor-tiles-20x20.png"
-WALL_IMG = "./images/structures.png"
-ETHER_IMAGE = "./images/ether.png"
-TUBE_IMAGE = "./images/tube_plastique.png"
-SERINGE_IMAGE = "./images/seringue.png"
-BAD_GUY_IMAGE = "./images/Gardien.png"
-PLAYER_IMG = "./images/MacGyver.png"
+FL = "./images/floor-tiles-20x20.png"
+WA = "./images/structures.png"
+E = "./images/ether.png"
+T = "./images/tube_plastique.png"
+S = "./images/seringue.png"
+BG = "./images/Gardien.png"
+PL = "./images/MacGyver.png"

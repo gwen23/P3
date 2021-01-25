@@ -1,8 +1,8 @@
-import pygame
+import pygame as pg
 
 from game.settings import *
 
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+SCREEN = pg.display.set_mode((WIDTH, HEIGHT))
 
 
 class Level:
@@ -15,35 +15,35 @@ class Level:
             y = int(value[0]) * SIZE_SPRITE
             sprite = tiles[value]
             if sprite == " ":
-                SCREEN.blit(pygame.image.load(FLOOR_IMG).convert(), (x, y))
+                SCREEN.blit(pg.image.load(FL).convert(), (x, y))
             elif sprite == "X":
-                SCREEN.blit(pygame.image.load(WALL_IMG).convert(), (x, y))
+                SCREEN.blit(pg.image.load(WA).convert(), (x, y))
             elif sprite == "P":
-                SCREEN.blit(pygame.image.load(PLAYER_IMG).convert(), (x, y))
+                SCREEN.blit(pg.image.load(PL).convert(), (x, y))
             elif sprite == "B":
-                SCREEN.blit(pygame.image.load(BAD_GUY_IMAGE).convert(), (x, y))
+                SCREEN.blit(pg.image.load(BG).convert(), (x, y))
             elif sprite == "E":
-                SCREEN.blit(pygame.image.load(ETHER_IMAGE).convert(), (x, y))
+                SCREEN.blit(pg.image.load(E).convert(), (x, y))
             elif sprite == "T":
-                SCREEN.blit(pygame.image.load(TUBE_IMAGE).convert(), (x, y))
+                SCREEN.blit(pg.image.load(T).convert(), (x, y))
             elif sprite == "S":
-                SCREEN.blit(pygame.image.load(SERINGE_IMAGE).convert(), (x, y))
+                SCREEN.blit(pg.image.load(S).convert(), (x, y))
 
     def movement(self, x, y):
         for key, value in enumerate(self.tiles):
             x = int(value[1]) * SIZE_SPRITE
             y = int(value[0]) * SIZE_SPRITE
-        for event.type in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
+        for event.type in pg.event.get():
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_RIGHT:
                     y += (1 * SIZE_SPRITE)
-                    SCREEN.blit(pygame.image.load(PLAYER_IMG).convert_alpha(), (x, y + 20))
-                elif event.key == pygame.K_LEFT:
+                    SCREEN.blit(pg.image.load(PL).convert_alpha(), (x, y + 20))
+                elif event.key == pg.K_LEFT:
                     y -= (1 * SIZE_SPRITE)
-                    SCREEN.blit(pygame.image.load(PLAYER_IMG).convert_alpha(), (x, y - 20))
-                elif event.key == pygame.K_DOWN:
+                    SCREEN.blit(pg.image.load(PL).convert_alpha(), (x, y - 20))
+                elif event.key == pg.K_DOWN:
                     x -= (1 * SIZE_SPRITE)
-                    SCREEN.blit(pygame.image.load(PLAYER_IMG).convert_alpha(), (x - 20, y))
-                elif event.key == pygame.K_UP:
+                    SCREEN.blit(pg.image.load(PL).convert_alpha(), (x - 20, y))
+                elif event.key == pg.K_UP:
                     x += (1 * SIZE_SPRITE)
-                    SCREEN.blit(pygame.image.load(PLAYER_IMG).convert_alpha(), (x + 20, y))
+                    SCREEN.blit(pg.image.load(PL).convert_alpha(), (x + 20, y))

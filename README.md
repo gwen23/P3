@@ -7,7 +7,7 @@ To win the game we need to pick up three items randomly placed in the maze and b
 
 - Python3 (https://www.python.org/)
 - PIP to download the dependencies (https://pypi.org/project/pip/)
-- Virtualenv to generate a local env to run the game (https://virtualenv.pypa.io/en/stable/installation/)
+- Virtualenv to generate a local env to run the game (https://virtualenv.pypa.io/en/latest/installation.html)
 - Pygame library : https://www.pygame.org/wiki/GettingStarted
 
 ## install the game :
@@ -19,8 +19,8 @@ https://github.com/gwen23/P3
 
 2nd step - Create a virtual env and activate it
 ```
-python3 -m venv env
-source env/bin/activate
+python -m venv env
+source env/Scripts/activate
 ```
 
 3rd step - Download the dependencies :
