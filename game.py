@@ -1,7 +1,6 @@
 import pygame as pg
-import pygame.key as kd
 
-
+from pygame.locals import *
 from game.settings import E, T, S, FL, WA, BG, PL, WIDTH, HEIGHT, SIZE_SPRITE
 from game.level import Level
 from game.the_maze import Maze
@@ -45,22 +44,22 @@ class Game:
         while is_running:
             clock.tick(5)
             for event in pg.event.get():
-                if event.type == kd and event.key == pg.K_RIGHT:
+                if event.type == KEYDOWN and event.key == pg.K_RIGHT:
                     if self.maze.move_macgyver("right"):
                         SCREEN.blit(pg.image.load(FL).convert(), (x, y))
                         x += 1 * SIZE_SPRITE
                         SCREEN.blit(pg.image.load(PL).convert_alpha(), (x, y))
-                elif event.type == kd and event.key == pg.K_LEFT:
+                elif event.type == KEYDOWN and event.key == pg.K_LEFT:
                     if self.maze.move_macgyver("left"):
                         SCREEN.blit(pg.image.load(FL).convert(), (x, y))
                         x -= 1 * SIZE_SPRITE
                         SCREEN.blit(pg.image.load(PL).convert_alpha(), (x, y))
-                elif event.type == kd and event.key == pg.K_UP:
+                elif event.type == KEYDOWN and event.key == pg.K_UP:
                     if self.maze.move_macgyver("up"):
                         SCREEN.blit(pg.image.load(FL).convert(), (x, y))
                         y -= 1 * SIZE_SPRITE
                         SCREEN.blit(pg.image.load(PL).convert_alpha(), (x, y))
-                elif event.type == kd and event.key == pg.K_DOWN:
+                elif event.type == KEYDOWN and event.key == pg.K_DOWN:
                     if self.maze.move_macgyver("down"):
                         SCREEN.blit(pg.image.load(FL).convert(), (x, y))
                         y += 1 * SIZE_SPRITE
