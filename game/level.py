@@ -1,6 +1,7 @@
 import pygame as pg
+import pygame.event as event
 
-from game.settings import *
+from game.settings import E, T, S, FL, WA, BG, PL, WIDTH, HEIGHT, SIZE_SPRITE
 
 SCREEN = pg.display.set_mode((WIDTH, HEIGHT))
 
