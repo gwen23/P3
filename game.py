@@ -80,7 +80,7 @@ class Game:
                 if event.type == pg.QUIT:
                     is_running = False
                 self.count_display()
-            pg.display.update()
+            pg.display.update() 
         pg.quit()
 
 
