@@ -10,7 +10,7 @@ WALL_STRIPE = "X"
 FLOOR_STRIPE = " "
 
 WIDTH = 300
-HEIGHT = 300
+HEIGHT = 350
 SIZE_SPRITE = 20
 FOND = "./images/floor-tiles-20x20.png"
 
