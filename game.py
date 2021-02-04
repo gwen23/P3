@@ -35,7 +35,20 @@ class Game:
     def run(self):
         self.SCREEN.blit(self.fond, (0, 0))
         self.level.display(self.maze.tiles)
+        self.count_display()
         self.main_loop()
+
+    def count_display(self):
+        # create a black surface and display it
+        s = pg.Surface((300, 100))
+        s.fill((0, 0, 0))
+        self.SCREEN.blit(s, (20, 300))
+        # write object count
+        white = (255, 255, 255)
+        phrase = "nombre d'objets ramassés : " + str(self.maze.numb_objects)
+        font = pg.font.SysFont("arial", 24)
+        text = font.render(phrase, True, white)
+        self.SCREEN.blit(text, (20, 310))
 
     def main_loop(self):
         x = 0
@@ -66,6 +79,7 @@ class Game:
                         SCREEN.blit(pg.image.load(PL).convert_alpha(), (x, y))
                 if event.type == pg.QUIT:
                     is_running = False
+                self.count_display()
             pg.display.update()
         pg.quit()
 
